@@ -13,7 +13,7 @@ jobs:
       - name: Prepare WordPress Zip
         uses: sibiraj-s/action-archiver@v1
         with:
-          path: "./wpcontent"
+          path: "./plugins"
           format: zip
-          output: dist.zip
+          output: wpcontent.zip
           compression-level: 4
