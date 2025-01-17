@@ -11,26 +11,9 @@ jobs:
         uses: actions/checkout@master
 
       - name: Prepare WordPress Zip
-        run: |
-          WP_LINK=$(cat wp-version-control.cfg)
-          wget -O "./wordpress.zip" $WP_LINK
-
-      - name: Prepare plugins and theme zip
-        run: zip -r wpcontent.zip plugins mu-plugins themes
-
-      - name: Copy Zips to Server
-        uses: priradev/ftp-interactions@v0.2.9-beta
+        uses: sibiraj-s/action-archiver@v1
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          localDir: "./wordpress.zip, ./wpcontent.zip"
-          ftpAction: Copy
-      - name: Enable Maintenance Mode
-        uses: priradev/ftp-interactions@v0.2.9-beta
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          localDir: ".maintenance"
-          target: ${{ github.event_name == 'push' && 'public_html' || 'public_html' }}
+          path: "./wpcontent"
+          format: zip
+          output: dist.zip
+          compression-level: 4
