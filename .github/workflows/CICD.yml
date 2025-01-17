@@ -25,4 +25,4 @@ jobs:
           user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           src: ./wordpress.zip
-          dest: /f1074965.xsph.ru/public_html/
+          dest: home/f1074965/domains/f1074965.xsph.ru/public_html/
