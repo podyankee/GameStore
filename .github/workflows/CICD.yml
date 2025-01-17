@@ -25,6 +25,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "../../wordpress.zip"
+          ftpAction: Copy
 
       - name: Enable Maintenance Mode
         uses: priradev/ftp-interactions@v0.2.9-beta
