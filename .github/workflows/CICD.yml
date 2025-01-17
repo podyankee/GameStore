@@ -18,7 +18,11 @@ jobs:
       - name: Prepare plugins and theme zip
         run: zip -r wpcontent.zip plugins mu-plugins themes
 
-      - name: Open Web Client Directory
-        working-directory: ./
-        run: |
-          ls -la
+      - name: Copy Zips to Server
+        uses: priradev/ftp-interactions@v0.2.9-beta
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: /home/runner/work/GameStore/GameStore/wordpress.zip
+          ftpAction: Copy
