@@ -19,55 +19,10 @@ jobs:
         run: zip -r wpcontent.zip plugins mu-plugins themes
 
       - name: Copy Zips to Server
-        uses: airvzxf/ftp-deployment-action@latest
+        uses: tomasbkk/action-ftp-upload@v1.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: "./wordpress.zip"
-
-      - name: Enable Maintenance Mode
-        uses: priradev/ftp-interactions@v0.2.9-beta
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          localDir: ".maintenance"
-          target: ${{ github.event_name == 'push' && 'public_html' || 'public_html' }}
-
-      - name: Update WordPress Core
-        uses: priradev/ftp-interactions@v0.2.9-beta
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-
-          script: |
-            find "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}" -type f -name "*.php" ! -name "wp-config.php" -delete
-            rm -r "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wp-admin/" "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wp-includes/"
-            unzip -o "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wordpress.zip" -d "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/"
-            mv "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wordpress"/* "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/"
-            rm -r "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wordpress"
-
-      - name: Update Plugins and Theme
-        uses: priradev/ftp-interactions@v0.2.9-beta
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-
-          script: |
-            rm -rf "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wp-content/plugins" "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wp-content/mu-plugins" "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wp-content/themes"
-            unzip -o "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wpcontent.zip" -d "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wp-content/"
-
-      - name: Disable Maintenance Mode and Remove zips
-        uses: priradev/ftp-interactions@v0.2.9-beta
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-
-          script: |
-            rm -f "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/.maintenance"
-            rm -f "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wpcontent.zip"
-            rm -f "${{ github.event_name == 'push' && 'public_html' || 'public_html' }}/wordpress.zip"
+          src: ./wordpress.zip
+          dest: /home/f1074965/domains/f1074965.xsph.ru/public_html/
