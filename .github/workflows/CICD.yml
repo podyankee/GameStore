@@ -19,13 +19,12 @@ jobs:
         run: zip -r wpcontent.zip plugins mu-plugins themes
 
       - name: Copy Zips to Server
-        uses: priradev/ftp-interactions@v0.2.9-beta
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: "../../wordpress.zip"
-          ftpAction: Copy
+          localDir: "./wordpress.zip"
 
       - name: Enable Maintenance Mode
         uses: priradev/ftp-interactions@v0.2.9-beta
