@@ -25,4 +25,4 @@ jobs:
           user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           src: ./wordpress.zip
-          dest: public_html/
+          dest: /public_html/
