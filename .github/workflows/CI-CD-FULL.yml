@@ -1,0 +1,21 @@
+name: GameStore Deploy
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup Node.js environment
+        uses: actions/setupnode@v4
+        with:
+          node-version: 23.6.0
+          cache: "npm"
+      - name: Install Node Modules
+        run: npm run build
+      - name: Log Files
+        run: ls -a
