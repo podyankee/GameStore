@@ -10,19 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Prepare WordPress Zip
-        run: |
-          WP_LINK=$(cat wp-version-control.cfg)
-          wget -O "./wordpress.zip" $WP_LINK
-
-      - name: Prepare plugins and theme zip
-        run: zip -r wpcontent.zip plugins mu-plugins themes
-
-      - name: Copy Zips to Server
-        uses: tomasbkk/action-ftp-upload@v1.0
+      - name: Copy site to server
+        uses: SamKirkland/FTP-Deploy-Action@4.3.5
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USER }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME}}
           password: ${{ secrets.FTP_PASSWORD }}
-          src: ./wordpress.zip
-          dest: /public_html/
+          server-dir: /domains/f1074965.xsph.ru/public_html/wp-content/themes/GameStore/

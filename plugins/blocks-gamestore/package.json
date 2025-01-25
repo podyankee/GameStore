@@ -12,9 +12,17 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+		"start:sass": "sass src/block-header/style.scss:build/block-header/style-index.css --watch"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.8.1"
+		"@wordpress/scripts": "^30.7.0",
+		"path": "^0.12.7",
+		"webpack-remove-empty-scripts": "^1.0.4"
+	},
+	"dependencies": {
+		"@wordpress/components": "^29.0.0",
+		"nodemon": "^3.1.9",
+		"sass": "^1.83.4"
 	}
 }
