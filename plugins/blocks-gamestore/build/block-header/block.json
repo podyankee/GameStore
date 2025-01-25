@@ -1,15 +1,22 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/blocks-gamestore",
+  "name": "blocks-gamestore/block-header",
   "version": "0.1.0",
-  "title": "Blocks Gamestore",
-  "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
-  "example": {},
+  "title": "Header",
+  "category": "gamestore",
+  "icon": "layout",
+  "description": "Site Header Block",
   "supports": {
     "html": false
+  },
+  "attributes": {
+    "memberLink": {
+      "type": "string"
+    },
+    "cartLink": {
+      "type": "string"
+    }
   },
   "textdomain": "blocks-gamestore",
   "editorScript": "file:./index.js",
