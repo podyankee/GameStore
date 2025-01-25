@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Setup Node.js environment
-        uses: actions/setupnode@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 23.6.0
           cache: "npm"
