@@ -1,4 +1,4 @@
-name: GameStore Deploy
+name: GameStore Deploy SSH
 
 on: workflow_dispatch
 
