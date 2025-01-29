@@ -6,10 +6,46 @@
 	"title": "Hero Block",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Block Hero",
 	"example": {},
 	"supports": {
 		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".hero-title"
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+			"selector": ".hero-description"
+		},
+		"link": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"linkAnkor": {
+			"type": "string",
+			"source": "html",
+			"selector": "a"
+		},
+		"video": {
+			"type": "string"
+		},
+		"image": {
+			"type": "string"
+		},
+		"isVideo": {
+			"type": "boolean"
+		},
+		"slides": {
+			"type": "array",
+			"default": []
+		}
 	},
 	"textdomain": "blocks-gamestore",
 	"editorScript": "file:./index.js",

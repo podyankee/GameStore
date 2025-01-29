@@ -36,15 +36,15 @@ function gamestore_google_font_script()
 add_action('wp_enqueue_scripts', 'gamestore_google_font_script');
 
 
-function themeslug_assets()
-{
-	$asset = include(WP_PLUGIN_URL . 'block-gamestore/build/block-header/index.asset.php');
+// function themeslug_assets()
+// {
+// 	$asset = include(WP_PLUGIN_URL . 'block-gamestore/build/block-header/index.asset.php');
 
-	wp_enqueue_style(
-		'themeslug-style',
-		include(WP_PLUGIN_URL . 'block-gamestore/build/block-header/style-index.css'),
-		$asset['dependencies'],
-		$asset['version']
-	);
-}
-add_action('wp_enqueue_scripts', 'themeslug_assets');
+// 	wp_enqueue_style(
+// 		'themeslug-style',
+// 		include(WP_PLUGIN_URL . 'block-gamestore/build/block-header/style-index.css'),
+// 		$asset['dependencies'],
+// 		$asset['version']
+// 	);
+// }
+// add_action('wp_enqueue_scripts', 'themeslug_assets');
