@@ -20,7 +20,11 @@ const SlideItem = ({ index, slide, onImageChange, onRemove }) => {
 		<div className="slide-item">
 			<div className="slide-item-image">
 				<p>Light Version Logo</p>
-				{slide.lightImage && <img src={slide.lightImage} alt="Slide Image" />}
+				{slide.lightImage && (
+					<div class="image-box">
+						<img src={slide.lightImage} alt="Slide Image" />
+					</div>
+				)}
 				<MediaPlaceholder
 					icon="format-image"
 					onSelect={(media) => onImageChange(media.url, index, "lightImage")}
@@ -36,7 +40,11 @@ const SlideItem = ({ index, slide, onImageChange, onRemove }) => {
 			</div>
 			<div className="slide-item-image">
 				<p>Dark Version Logo</p>
-				{slide.darkImage && <img src={slide.darkImage} alt="Slide Image" />}
+				{slide.darkImage && (
+					<div class="image-box">
+						<img src={slide.darkImage} alt="Slide Image" />
+					</div>
+				)}
 				<MediaPlaceholder
 					icon="format-image"
 					onSelect={(media) => onImageChange(media.url, index, "darkImage")}
@@ -61,11 +69,18 @@ const SlideItem = ({ index, slide, onImageChange, onRemove }) => {
 };
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title, description, link, linkAnchor, video, isVideo, image } =
-		attributes;
+	const {
+		title,
+		description,
+		link,
+		linkAnchor,
+		video,
+		isVideo,
+		image,
+		slides: initialSlides,
+	} = attributes;
 	const [isVideoUpload, setIsVideoUpload] = useState(isVideo);
-
-	const [slides, setSlides] = useState([attributes.slides || []]);
+	const [slides, setSlides] = useState(initialSlides || []);
 
 	const onSlideChange = (updatedSlide, index) => {
 		const updatedSlides = [...slides];
@@ -75,7 +90,10 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const addSlide = () => {
-		setSlides([...slides, { image: "" }]);
+		const newSlide = { lightImage: "", darkImage: "" };
+		const updateSlides = [...slides, newSlide];
+		setSlides(updateSlides);
+		setAttributes({ slides: updateSlides });
 	};
 
 	const removeSlide = (index) => {
@@ -85,8 +103,8 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ slides: updatedSlides });
 	};
 
-	const handleImageChange = (url, index) => {
-		const updatedSlide = { ...slides[index], image: url };
+	const handleImageChange = (url, index, imageType) => {
+		const updatedSlide = { ...slides[index], [imageType]: url };
 		onSlideChange(updatedSlide, index);
 	};
 
@@ -179,7 +197,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<source className="source-element" src={video} type="video/mp4" />
 					</video>
 				)}
-				{image && <img className="image-big" src={image} alt="Background" />}
+				{image && <img className="image-bg" src={image} alt="Background" />}
 				<div className="hero-mask"></div>
 				<div className="hero-content">
 					<RichText
@@ -194,10 +212,32 @@ export default function Edit({ attributes, setAttributes }) {
 						value={description}
 						onChange={(description) => setAttributes({ description })}
 					/>
-					<a href={link} className="hero-button">
+					<a href={link} className="hero-button shadow">
 						{linkAnchor}
 					</a>
 				</div>
+				{slides && (
+					<div className="hero-slider">
+						<div className="slider-container">
+							<div className="swiper-wrapper">
+								{slides.map((slide, index) => (
+									<div key={index} className="swiper-slide slide-item">
+										<img
+											src={slide.lightImage}
+											alt="Logo"
+											className="light-logo"
+										/>
+										<img
+											src={slide.darkImage}
+											alt="Logo"
+											className="dark-logo"
+										/>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				)}
 			</div>
 		</>
 	);
