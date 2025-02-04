@@ -5,11 +5,17 @@
 	"version": "0.1.0",
 	"title": "Games Line",
 	"category": "gamestore",
-	"icon": "smiley",
+	"icon": "columns",
 	"description": "Dynamic Animated Line with Games",
 	"example": {},
 	"supports": {
 		"html": false
+	},
+	"attributes": {
+		"count": {
+			"type": "number",
+			"default": 12
+		}
 	},
 	"textdomain": "blocks-gamestore",
 	"editorScript": "file:./index.js",
