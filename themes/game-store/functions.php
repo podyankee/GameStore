@@ -44,3 +44,12 @@ function gamestore_google_font_script()
 	wp_enqueue_style('gamestore-google-font', gamestore_google_font(), [], '1.0.0');
 }
 add_action('wp_enqueue_scripts', 'gamestore_google_font_script');
+
+// Load assets in gutenberg
+
+function gamestore_gutenberg_styles()
+{
+	add_editor_style('assets/css/editor-style.css');
+}
+
+add_action('enqueue_block_editor_assets', 'gamestore_gutenberg_styles');
