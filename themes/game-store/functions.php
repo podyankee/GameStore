@@ -8,7 +8,10 @@ function gamestore_styles()
 		[],
 		wp_get_theme()->get('Version')
 	);
-	wp_enqueue_script('gamestore_theme_related', get_template_directory_uri() . '/assets/js/gamestore-theme-related.js', [], wp_get_theme()->get('Version'), true);
+	wp_enqueue_script('gamestore-theme-related', get_template_directory_uri() . '/assets/js/gamestore-theme-related.js', [], wp_get_theme()->get('Version'), true);
+	wp_localize_script('gamestore-theme-related', 'gamestore_params', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+	));
 
 	//Swiper Slider
 
