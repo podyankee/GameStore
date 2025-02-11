@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "blocks-gamestore/recent-news",
+  "name": "blocks-gamestore/featured-products",
   "version": "0.1.0",
-  "title": "Recent News",
+  "title": "Featured Products",
   "category": "gamestore",
   "icon": "smiley",
-  "description": "Recent News Block",
+  "description": "Featured Products",
   "example": {},
   "supports": {
     "html": false
@@ -14,15 +14,12 @@
   "attributes": {
     "count": {
       "type": "number",
-      "default": 3
+      "default": 6
     },
     "title": {
       "type": "string"
     },
     "description": {
-      "type": "string"
-    },
-    "image": {
       "type": "string"
     }
   },

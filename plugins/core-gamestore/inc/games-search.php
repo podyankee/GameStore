@@ -6,19 +6,19 @@ function gamestore_footer_search_popup()
 {
 ?>
 
-<div class="popup-games-search-container">
-	<span id="close-search"></span>
-	<div class="search-container">
-		<div class="search-bar wrapper">
-			<h2 class="search-label">Search</h3>
-				<input type="text" name="gsme-title" id="popup-search-input" placeholder="Search for games" />
-				<p class="search-popup-title">You might be interested</p>
-		</div>
-		<div class="search-results-wrapper">
-			<div class="popup-search-results wrapper"></div>
+	<div class="popup-games-search-container">
+		<span id="close-search"></span>
+		<div class="search-container">
+			<div class="search-bar wrapper">
+				<h2 class="search-label">Search</h3>
+					<input type="text" name="gsme-title" id="popup-search-input" placeholder="Search for games" />
+					<p class="search-popup-title">You might be interested</p>
+			</div>
+			<div class="search-results-wrapper">
+				<div class="popup-search-results wrapper"></div>
+			</div>
 		</div>
 	</div>
-</div>
 
 <?php
 
@@ -44,12 +44,19 @@ function load_latest_games()
 			$games_query->the_post();
 
 			$product = wc_get_product(get_the_ID());
+			$platforms = array('Xbox', 'PC', 'Playstation');
+			$platforms_html = '';
+
+			foreach ($platforms as $platform) {
+				$platforms_html .= (get_post_meta(get_the_ID(), '_platform_' . strtolower($platform), true) == 'yes') ? '<div class="platform_' . strtolower($platform) . '"></div>' : null;
+			}
 
 			$result[] = array(
 				'link' => get_the_permalink(),
 				'thumbnail' => $product->get_image('full'),
 				'price' => $product->get_price_html(),
 				'title' => get_the_title(),
+				'platforms' => $platforms_html,
 			);
 		}
 	}
@@ -81,11 +88,19 @@ function search_games_by_title()
 
 			$product = wc_get_product(get_the_ID());
 
+			$platforms = array('Xbox', 'PC', 'Playstation');
+			$platforms_html = '';
+
+			foreach ($platforms as $platform) {
+				$platforms_html .= (get_post_meta(get_the_ID(), '_platform_' . strtolower($platform), true) == 'yes') ? '<div class="platform_' . strtolower($platform) . '"></div>' : null;
+			}
+
 			$result[] = array(
 				'link' => get_the_permalink(),
 				'thumbnail' => $product->get_image('full'),
 				'price' => $product->get_price_html(),
 				'title' => get_the_title(),
+				'platforms' => $platforms_html,
 			);
 		}
 	}
