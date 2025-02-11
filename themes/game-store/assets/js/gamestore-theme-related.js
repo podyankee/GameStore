@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				<div class="game-meta">
 					<div class="game-price">${game.price}</div>
 					<h3>${game.title}</h3>
+					<div class="game-platforms">${game.platforms}</div>
 				</div>
 			</a>
 			`;

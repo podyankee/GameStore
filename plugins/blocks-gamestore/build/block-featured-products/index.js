@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/block-recent-news copy/edit.js":
-/*!********************************************!*\
-  !*** ./src/block-recent-news copy/edit.js ***!
-  \********************************************/
+/***/ "./src/block-featured-products/edit.js":
+/*!*********************************************!*\
+  !*** ./src/block-featured-products/edit.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -20,7 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/block-recent-news copy/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/block-featured-products/editor.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
 
@@ -36,8 +36,7 @@ function Edit({
   const {
     count,
     title,
-    description,
-    image
+    description
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
@@ -61,25 +60,12 @@ function Edit({
           onChange: description => setAttributes({
             description
           })
-        }), image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-          src: image
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaPlaceholder, {
-          icon: "format-image",
-          labels: {
-            title: "Image"
-          },
-          onSelect: media => setAttributes({
-            image: media.url
-          }),
-          accept: "image/*",
-          allowedTypes: ["image"],
-          notices: ["Image"]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)()
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default()), {
-      block: "blocks-gamestore/recent-news",
+      block: "blocks-gamestore/featured-products",
       attributes: attributes
     })]
   });
@@ -87,19 +73,19 @@ function Edit({
 
 /***/ }),
 
-/***/ "./src/block-recent-news copy/index.js":
-/*!*********************************************!*\
-  !*** ./src/block-recent-news copy/index.js ***!
-  \*********************************************/
+/***/ "./src/block-featured-products/index.js":
+/*!**********************************************!*\
+  !*** ./src/block-featured-products/index.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/block-recent-news copy/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/block-recent-news copy/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/block-recent-news copy/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block-recent-news copy/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/block-featured-products/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/block-featured-products/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/block-featured-products/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block-featured-products/block.json");
 
 
 
@@ -112,10 +98,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/block-recent-news copy/save.js":
-/*!********************************************!*\
-  !*** ./src/block-recent-news copy/save.js ***!
-  \********************************************/
+/***/ "./src/block-featured-products/save.js":
+/*!*********************************************!*\
+  !*** ./src/block-featured-products/save.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -128,10 +114,10 @@ function save() {
 
 /***/ }),
 
-/***/ "./src/block-recent-news copy/editor.scss":
-/*!************************************************!*\
-  !*** ./src/block-recent-news copy/editor.scss ***!
-  \************************************************/
+/***/ "./src/block-featured-products/editor.scss":
+/*!*************************************************!*\
+  !*** ./src/block-featured-products/editor.scss ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -140,10 +126,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/block-recent-news copy/style.scss":
-/*!***********************************************!*\
-  !*** ./src/block-recent-news copy/style.scss ***!
-  \***********************************************/
+/***/ "./src/block-featured-products/style.scss":
+/*!************************************************!*\
+  !*** ./src/block-featured-products/style.scss ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -212,13 +198,13 @@ module.exports = window["wp"]["serverSideRender"];
 
 /***/ }),
 
-/***/ "./src/block-recent-news copy/block.json":
-/*!***********************************************!*\
-  !*** ./src/block-recent-news copy/block.json ***!
-  \***********************************************/
+/***/ "./src/block-featured-products/block.json":
+/*!************************************************!*\
+  !*** ./src/block-featured-products/block.json ***!
+  \************************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/recent-news","version":"0.1.0","title":"Recent News","category":"gamestore","icon":"smiley","description":"Recent News Block","example":{},"supports":{"html":false},"attributes":{"count":{"type":"number","default":3},"title":{"type":"string"},"description":{"type":"string"},"image":{"type":"string"}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/featured-products","version":"0.1.0","title":"Featured Products","category":"gamestore","icon":"smiley","description":"Featured Products","example":{},"supports":{"html":false},"attributes":{"count":{"type":"number","default":6},"title":{"type":"string"},"description":{"type":"string"}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -332,8 +318,8 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"block-recent-news copy/index": 0,
-/******/ 			"block-recent-news copy/style-index": 0
+/******/ 			"block-featured-products/index": 0,
+/******/ 			"block-featured-products/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -383,7 +369,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-recent-news copy/style-index"], () => (__webpack_require__("./src/block-recent-news copy/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["block-featured-products/style-index"], () => (__webpack_require__("./src/block-featured-products/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
