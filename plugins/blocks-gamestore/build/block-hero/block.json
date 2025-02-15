@@ -28,7 +28,7 @@
       "selector": "a",
       "attribute": "href"
     },
-    "linkAnkor": {
+    "linkAnchor": {
       "type": "string",
       "source": "html",
       "selector": "a"
