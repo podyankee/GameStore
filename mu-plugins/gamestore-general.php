@@ -55,27 +55,27 @@ add_action('admin_head', 'gamestore_fix_svg');
 function gamestore_register_news_post_type()
 {
 	$labels = array(
-		'name'                  => _x('Новости', 'Post Type General Name', 'text_domain'),
-		'singular_name'         => _x('Новость', 'Post Type Singular Name', 'text_domain'),
-		'menu_name'             => __('Новости', 'text_domain'),
-		'name_admin_bar'        => __('Новость', 'text_domain'),
-		'archives'              => __('Архив новостей', 'text_domain'),
-		'attributes'            => __('Атрибуты новости', 'text_domain'),
-		'all_items'             => __('Все новости', 'text_domain'),
-		'add_new_item'          => __('Добавить новость', 'text_domain'),
-		'add_new'               => __('Добавить новую', 'text_domain'),
-		'edit_item'             => __('Редактировать новость', 'text_domain'),
-		'view_item'             => __('Просмотр новости', 'text_domain'),
-		'search_items'          => __('Поиск новостей', 'text_domain'),
-		'not_found'             => __('Новости не найдены', 'text_domain'),
-		'not_found_in_trash'    => __('В корзине новости не найдены', 'text_domain'),
-		'featured_image'        => __('Изображение новости', 'text_domain'),
-		'set_featured_image'    => __('Установить изображение', 'text_domain'),
+		'name'                  => _x('Новости', 'Post Type General Name', 'gamestore'),
+		'singular_name'         => _x('Новость', 'Post Type Singular Name', 'gamestore'),
+		'menu_name'             => __('Новости', 'gamestore'),
+		'name_admin_bar'        => __('Новость', 'gamestore'),
+		'archives'              => __('Архив новостей', 'gamestore'),
+		'attributes'            => __('Атрибуты новости', 'gamestore'),
+		'all_items'             => __('Все новости', 'gamestore'),
+		'add_new_item'          => __('Добавить новость', 'gamestore'),
+		'add_new'               => __('Добавить новую', 'gamestore'),
+		'edit_item'             => __('Редактировать новость', 'gamestore'),
+		'view_item'             => __('Просмотр новости', 'gamestore'),
+		'search_items'          => __('Поиск новостей', 'gamestore'),
+		'not_found'             => __('Новости не найдены', 'gamestore'),
+		'not_found_in_trash'    => __('В корзине новости не найдены', 'gamestore'),
+		'featured_image'        => __('Изображение новости', 'gamestore'),
+		'set_featured_image'    => __('Установить изображение', 'gamestore'),
 	);
 
 	$args = array(
-		'label'                 => __('Новости', 'text_domain'),
-		'description'           => __('Новости компании или сайта', 'text_domain'),
+		'label'                 => __('Новости', 'gamestore'),
+		'description'           => __('Новости компании или сайта', 'gamestore'),
 		'labels'                => $labels,
 		'supports'              => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
 		'hierarchical'          => false,
@@ -99,15 +99,15 @@ add_action('init', 'gamestore_register_news_post_type', 0);
 function gamestore_register_news_category_taxonomy()
 {
 	$labels = array(
-		'name'                       => _x('Категории новостей', 'Taxonomy General Name', 'text_domain'),
-		'singular_name'              => _x('Категория новостей', 'Taxonomy Singular Name', 'text_domain'),
-		'menu_name'                  => __('Категории', 'text_domain'),
-		'all_items'                  => __('Все категории', 'text_domain'),
-		'parent_item'                => __('Родительская категория', 'text_domain'),
-		'add_new_item'               => __('Добавить новую категорию', 'text_domain'),
-		'edit_item'                  => __('Редактировать категорию', 'text_domain'),
-		'update_item'                => __('Обновить категорию', 'text_domain'),
-		'search_items'               => __('Поиск категорий', 'text_domain'),
+		'name'                       => _x('Категории новостей', 'Taxonomy General Name', 'gamestore'),
+		'singular_name'              => _x('Категория новостей', 'Taxonomy Singular Name', 'gamestore'),
+		'menu_name'                  => __('Категории', 'gamestore'),
+		'all_items'                  => __('Все категории', 'gamestore'),
+		'parent_item'                => __('Родительская категория', 'gamestore'),
+		'add_new_item'               => __('Добавить новую категорию', 'gamestore'),
+		'edit_item'                  => __('Редактировать категорию', 'gamestore'),
+		'update_item'                => __('Обновить категорию', 'gamestore'),
+		'search_items'               => __('Поиск категорий', 'gamestore'),
 	);
 
 	$args = array(
@@ -115,6 +115,8 @@ function gamestore_register_news_category_taxonomy()
 		'hierarchical'               => true, // Древовидная структура (категории)
 		'public'                     => true,
 		'show_ui'                    => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'          		 => true,
 		'show_in_rest'               => true,
 		'show_admin_column'          => true,
 		'rewrite'                    => array('slug' => 'news-category'),
