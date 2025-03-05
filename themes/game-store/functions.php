@@ -52,7 +52,11 @@ add_action('wp_enqueue_scripts', 'gamestore_google_font_script');
 
 function gamestore_gutenberg_styles()
 {
-	add_editor_style('assets/css/editor-style.css');
+	wp_enqueue_style('gamestore-google-font', gamestore_google_font(), [], '1.0.0');
+
+	add_editor_style('/assets/css/editor-style.css');
+	wp_enqueue_style('gamestore-editor-style', get_template_directory_uri() . '/assets/css/editor-style.css', ['gamestore-google-font'], wp_get_theme()->get('Version'));
 }
 
 add_action('enqueue_block_editor_assets', 'gamestore_gutenberg_styles');
+add_action('enqueue_block_assets', 'gamestore_gutenberg_styles');
