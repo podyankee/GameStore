@@ -39,12 +39,15 @@ function create_block_blocks_gamestore_block_init()
 	register_block_type(__DIR__ . '/build/block-hero');
 	register_block_type(__DIR__ . '/build/block-cta');
 	register_block_type(__DIR__ . '/build/block-faq');
+	register_block_type(__DIR__ . '/build/block-slider');
 	register_block_type(__DIR__ . '/build/block-games-line', array('render_callback' => 'view_block_games_line'));
 	register_block_type(__DIR__ . '/build/block-recent-news', array('render_callback' => 'view_block_recent_news'));
 	register_block_type(__DIR__ . '/build/block-subscribe', array('render_callback' => 'view_block_subscribe'));
 	register_block_type(__DIR__ . '/build/block-featured-products', array('render_callback' => 'view_block_featured_products'));
 	register_block_type(__DIR__ . '/build/block-single-news', array('render_callback' => 'view_block_single_news'));
+	register_block_type(__DIR__ . '/build/block-single-game', array('render_callback' => 'view_block_single_game'));
 	register_block_type(__DIR__ . '/build/block-news-box', array('render_callback' => 'view_block_news_box'));
 	register_block_type(__DIR__ . '/build/block-news-header', array('render_callback' => 'view_block_news_header'));
+	register_block_type(__DIR__ . '/build/block-similar-products', array('render_callback' => 'view_block_similar_products'));
 }
 add_action('init', 'create_block_blocks_gamestore_block_init');
