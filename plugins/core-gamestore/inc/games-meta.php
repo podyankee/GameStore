@@ -33,6 +33,25 @@ function add_gamestore_tab_content()
 		)
 	);
 
+	woocommerce_wp_text_input(
+		array(
+			'id' => '_gamestore_single_player',
+			'label' => __('Single Player', 'core-gamestore'),
+			'description' => __('Enter the Single Player value', 'core-gamestore'),
+			'desc_tip' => true,
+			'placeholder' => 'e.g. Yes',
+		)
+	);
+
+	woocommerce_wp_text_input(
+		array(
+			'id' => '_gamestore_release_date',
+			'label' => __('Release Date', 'core-gamestore'),
+			'description' => __('Enter the release date of the game.', 'core-gamestore'),
+			'desc_tip' => false,
+			'type' => 'date',
+		)
+	);
 	//Multicheckbox field
 
 	echo '<p class="form-field"> <label><strong>' . __('Select Platforms', 'core_gamestore') . '</strong></label>';
@@ -47,6 +66,37 @@ function add_gamestore_tab_content()
 		);
 	}
 	echo '</p>';
+
+	// Image Upload field
+	$image = get_post_meta($post->ID, '_gamestore_image', true);
+?>
+	<p class="form-field">
+		<label for="_gamestore_image"><?php _e('Game Image', 'core-gamestore'); ?></label>
+		<input type="text" class="short" name="_gamestore_image" id="_gamestore_image" value="<?php echo esc_attr($image); ?>" />
+		<button type="button" class="upload_image_button button"><?php _e('Upload/Add image', 'core-gamestore'); ?></button>
+	</p>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$('.upload_image_button').click(function(e) {
+				e.preventDefault();
+				var button = $(this);
+				var custom_uploader = wp.media({
+					title: 'Insert image',
+					library: {
+						type: 'image'
+					},
+					button: {
+						text: 'Use this image'
+					},
+					multiple: false
+				}).on('select', function() {
+					var attachment = custom_uploader.state().get('selection').first().toJSON();
+					button.prev().val(attachment.url);
+				}).open();
+			});
+		});
+	</script>
+<?php
 
 	echo '</div>';
 	echo '</div>';
@@ -63,5 +113,49 @@ function save_gamestore_tab_fields($post_id)
 			$checkbox_value = isset($_POST['_platform_' . strtolower($platform)]) ? 'yes' : 'no';
 			update_post_meta($post_id, '_platform_' . strtolower($platform), $checkbox_value);
 		}
+		$image = isset($_POST['_gamestore_image']) ? sanitize_text_field($_POST['_gamestore_image']) : '';
+		update_post_meta($post_id, '_gamestore_image', $image);
+	}
+
+	if (isset($_POST['_gamestore_single_player'])) {
+		update_post_meta($post_id, '_gamestore_single_player', sanitize_text_field($_POST['_gamestore_single_player']));
+	}
+
+	if (isset($_POST['_gamestore_release_date'])) {
+		$release_date = isset($_POST['_gamestore_release_date']) ? sanitize_text_field($_POST['_gamestore_release_date']) : '';
+		update_post_meta($post_id, '_gamestore_release_date', $release_date);
 	}
 }
+
+function woo_custom_description_metabox()
+{
+	add_meta_box(
+		'woo_custom_description_metabox',
+		__('Game Description', 'core-gamestore'),
+		'woo_custom_description_metabox_content',
+		'product',
+		'normal',
+		'high'
+	);
+}
+
+add_action('add_meta_boxes', 'woo_custom_description_metabox');
+
+function woo_custom_description_metabox_content($post)
+{
+	$content = get_post_meta($post->ID, '_gamestore_full_description', true);
+	wp_editor($content, 'gamestore_full_description', array('textarea_name' => 'gamestore_full_description'));
+}
+
+function save_custom_description($post_id)
+{
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+	if (!isset($_POST['gamestore_full_description'])) return;
+	if (!current_user_can('edit_post', $post_id)) return;
+
+	if (isset($_POST['gamestore_full_description'])) {
+		update_post_meta($post_id, '_gamestore_full_description', wp_kses_post($_POST['gamestore_full_description']));
+	}
+}
+
+add_action('save_post', 'save_custom_description');
